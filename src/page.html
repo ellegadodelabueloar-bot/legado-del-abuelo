@@ -1,0 +1,163 @@
+<div class="fontbar" role="group" aria-label="Probar tipografía">
+  <span>Tipografía</span>
+  <button type="button" data-font="manual" aria-pressed="true">Manual</button>
+  <button type="button" data-font="almacen" aria-pressed="false">Almacén</button>
+  <button type="button" data-font="campo" aria-pressed="false">Campo</button>
+</div>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="frame" id="frame">
+    <div class="pattern tile" aria-hidden="true"></div>
+    <div class="vignette"></div>
+
+    <nav class="topnav">
+      <svg class="brandmark" aria-label="Legado del Abuelo"><use href="#el-logo"/></svg>
+      <div class="pill" role="tablist" aria-label="Secciones">
+        <button type="button" data-go="inicio" aria-current="true" aria-label="Inicio">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        </button>
+        <button type="button" data-go="herencia" aria-label="La herencia"><svg viewBox="0 0 100 100"><use href="#el-beret-solid" width="100" height="100"/></svg></button>
+        <button type="button" data-go="catalogo" aria-label="Las mostazas"><svg viewBox="0 0 100 100"><use href="#el-seed-ring" width="100" height="100"/></svg></button>
+        <button type="button" data-go="armador" aria-label="Armá tu combo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><circle cx="9" cy="6" r="2" fill="currentColor" stroke="none"/><line x1="4" y1="12" x2="20" y2="12"/><circle cx="15" cy="12" r="2" fill="currentColor" stroke="none"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="11" cy="18" r="2" fill="currentColor" stroke="none"/></svg>
+        </button>
+        <button type="button" data-go="adentro" aria-label="Lo que hay adentro"><svg viewBox="0 0 100 100"><use href="#el-leaf-ring" width="100" height="100"/></svg></button>
+        <button type="button" data-go="pedido" aria-label="Pedir">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.3a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.2L21 7H6"/></svg>
+        </button>
+      </div>
+      <a class="iglink" href="https://instagram.com/legadodelabuelo.ar" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </nav>
+
+    <div class="stage" id="stage" tabindex="0" role="group" aria-label="Elegí tu mostaza: arrastrá para cambiar de variedad">
+      <h1 class="herotitle">Elegí tu mostaza</h1>
+
+      <div class="mound mound-back" aria-hidden="true">
+        <svg viewBox="0 0 1500 420" preserveAspectRatio="none">
+          <defs><linearGradient id="gBack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#40321A"/><stop offset="1" stop-color="#281D0B"/></linearGradient></defs><path d="M-20 420 V300 C 120 290 230 250 360 200 C 480 154 590 108 700 92 C 730 88 750 86 770 88 C 880 104 1000 152 1120 198 C 1250 248 1370 290 1520 300 V420 Z" fill="url(#gBack)"/>
+          <g id="seedsBack" fill="#554322"></g>
+        </svg>
+      </div>
+
+      <i id="measure" style="position:absolute;left:0;top:0;width:var(--rx);height:var(--ry);visibility:hidden;pointer-events:none"></i>
+      <div class="namelayer" id="namelayer" aria-hidden="true"></div>
+      <div class="orbit" id="orbit"></div>
+
+      <div class="mound mound-front" aria-hidden="true">
+        <svg viewBox="0 0 1500 420" preserveAspectRatio="none">
+          <defs><linearGradient id="gFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#241A0C"/><stop offset="1" stop-color="#110A04"/></linearGradient></defs><path d="M-20 420 V300 C 160 296 300 268 440 226 C 570 188 660 172 750 170 C 840 172 930 188 1060 226 C 1200 268 1340 296 1520 300 V420 Z" fill="url(#gFront)"/>
+          <g id="seedsFront" fill="#342612"></g>
+        </svg>
+      </div>
+
+      <div class="ticket" id="ticket">
+        <div class="p" id="ticketPrice">Consultar</div>
+        <div class="g">150 g</div>
+        <a id="ticketCta" href="#pedido" aria-label="Pedir este frasco">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.3a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.2L21 7H6"/></svg>
+        </a>
+      </div>
+
+      <div class="arrows">
+        <button type="button" id="prev" aria-label="Variedad anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg></button>
+        <button type="button" id="next" aria-label="Variedad siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></button>
+      </div>
+      <div class="hint">Arrastrá para elegir</div>
+    </div>
+  </div>
+</section>
+
+<section class="band herencia" id="herencia">
+  <div class="tile herencia-bg" aria-hidden="true"></div>
+  <div class="herencia-progress" aria-hidden="true"><i id="herProgress"></i></div>
+  <div class="wrap inner">
+    <div class="retrato" id="abueloPic" tabindex="0" role="button" aria-label="Tocá al abuelo">
+      <div class="seeds tile" aria-hidden="true"></div>
+      <svg class="face" aria-hidden="true"><use href="#el-abuelo"/></svg>
+      <div class="bubble" id="abueloBubble" aria-live="polite"></div>
+    </div>
+    <div class="historia">
+      <p class="eyebrow">Mi historia</p>
+      <h2>La receta que mi abuelo nunca terminó de contarme</h2>
+      <p class="reveal">Mi abuelo Juan preparaba un chimichurri con mostaza y un par de <strong class="kw">trucos que se guardaba para él</strong>. Nunca me los dio completos — así que en vez de perseguir su receta, me propuse algo distinto: que cualquiera pudiera sentir en un frasco <strong class="kw">lo mismo que yo sentí en su mesa</strong>.</p>
+      <p class="reveal">La base de ese chimichurri era <strong class="kw">la mostaza</strong>. Por eso arranqué por ahí. La receta completa de Juan, tal cual es, todavía la tengo guardada — pero algún día también va a salir a la venta.</p>
+      <p class="reveal">Ahí entendí algo simple: la mostaza <strong class="kw">no podía salir de una fábrica</strong>. Tenía que hacerla yo, con la misma exigencia que él.</p>
+      <blockquote class="callout reveal">Tiré bastantes tandas a la basura —algunas mejor ni recordarlas, jajaja— hasta lograr una mostaza artesanal de la que me animé a poner <strong class="kw">mi nombre y el de mi abuelo</strong> al lado. Así nació <strong class="kw">Legado del Abuelo</strong>.</blockquote>
+      <p class="reveal">Empezamos siendo mi abuelo y yo en una cocina. Hoy somos <strong class="kw">una comunidad que crece de mesa en mesa</strong>, y siempre hay lugar para que puedas ser parte.</p>
+      <p class="firma reveal">Esta historia sigue en cada frasco que se abre. Gracias a todos por seguir sumándose.</p>
+      <button type="button" class="btn" data-go="catalogo">Elegí tu mostaza y sé parte de esta historia</button>
+    </div>
+  </div>
+</section>
+
+<section class="band catalogo" id="catalogo">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="eyebrow">El catálogo</p>
+        <h2>Nuestras mostazas</h2>
+      </div>
+      <p>Misma semilla, misma receta base. Lo que cambia es el carácter: cuánto acompaña y cuánto se hace notar.</p>
+    </div>
+    <div class="grid4" id="fichas"></div>
+    <div id="combo"></div>
+  </div>
+</section>
+
+<section class="band armador" id="armador">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="eyebrow">Armá el tuyo</p>
+        <h2>Tu combo, a tu manera</h2>
+      </div>
+      <p>Elegí cuánto querés de cada variedad. A partir de 3 frascos hay descuento, y crece con la cantidad.</p>
+    </div>
+    <div class="armador-grid" id="armadorItems"></div>
+    <div class="armador-resumen">
+      <div class="ares-line"><span>Frascos</span><b id="arCount">0</b></div>
+      <div class="ares-line"><span>Subtotal</span><span id="arSubtotal">$0</span></div>
+      <div class="ares-line disc" id="arDiscLine" hidden><span>Descuento <b id="arPct">0%</b></span><span id="arDiscAmt">−$0</span></div>
+      <div class="ares-total"><span>Total</span><span id="arTotal">$0</span></div>
+      <a class="btn" id="arCta" href="javascript:void(0)" target="_blank" rel="noopener" aria-disabled="true">Pedir mi combo</a>
+      <p class="apend" id="arHint">Sumá 3 frascos para armar el combo.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band adentro" id="adentro">
+  <div class="wrap">
+    <p class="eyebrow">De la planta al frasco</p>
+    <h2>Lo que hay adentro</h2>
+    <p class="lead">Semilla de mostaza amarilla, vinagre, especias y el tiempo que tarda en asentarse. Los cuatro elementos que hay en la etiqueta son los cuatro que hay en la historia.</p>
+    <div class="grid4">
+      <article class="nota"><svg aria-hidden="true" style="aspect-ratio:1"><use href="#el-seeds"/></svg>
+        <h3>Granos de mostaza</h3><p>Sinapis alba, la mostaza amarilla. Es el producto: la semilla entera que se ve contra el vidrio y que revienta entre los dientes.</p></article>
+      <article class="nota"><svg aria-hidden="true" style="aspect-ratio:1"><use href="#el-leaf-ring"/></svg>
+        <h3>Hojas</h3><p>De la misma planta. Marcan el proceso de plantación y cosecha: cuándo la semilla está lista y cuándo todavía no.</p></article>
+      <article class="nota"><svg aria-hidden="true" style="aspect-ratio:1"><use href="#el-flower-ring"/></svg>
+        <h3>Flor</h3><p>La flor amarilla abre antes que la vaina. Es el reloj del campo: florece, cierra, y recién entonces se cosecha.</p></article>
+      <article class="nota"><svg aria-hidden="true" style="aspect-ratio:1"><use href="#el-beret-ring"/></svg>
+        <h3>Boina</h3><p>La de Juan. Está en cada frasco porque del otro lado de la marca no hay una fábrica: hay alguien.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band pedido" id="pedido">
+  <div class="pat tile" aria-hidden="true"></div>
+  <div class="wrap inner">
+    <p class="eyebrow">Pedidos</p>
+    <h2>Pedí tu frasco</h2>
+    <p>Escribinos y te contamos disponibilidad, precios y cómo te llega. Te respondemos nosotros, no un formulario.</p>
+    <div class="acciones" id="acciones"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <svg class="brandmark" aria-label="Legado del Abuelo"><use href="#el-logo"/></svg>
+  <p><a href="https://instagram.com/legadodelabuelo.ar" target="_blank" rel="noopener">@legadodelabuelo.ar</a> · Herencia gastronómica · ¿Comentanos qué te pareció?</p>
+</footer>
