@@ -509,6 +509,12 @@ footer a{text-decoration:none;border-bottom:1px solid rgba(216,195,158,.3)}
 .abuelo.colgado .globo::after{bottom:auto;top:-10px;border-bottom:9px solid var(--tinta);border-top:0}
 .abuelo.chico{--alto:clamp(130px,21vh,186px)}
 
+/* cuando solo se asoma por un lateral: entra inclinado, con los pies afuera de la pantalla */
+.abuelo.asoma .abuelo-cuerpo{transform:rotate(38deg)}
+.abuelo.asoma-der .abuelo-cuerpo{transform:rotate(-38deg)}
+.abuelo.asoma #abSombra,.abuelo.asoma .sombra{display:none}
+.abuelo.asoma-der .globo::after{left:auto;right:calc(var(--alto) * .22)}
+
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
 
 .stage{
@@ -2715,24 +2721,45 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
   /* cuando la persona llega a una sección: pasa corriendo, se frena, te la muestra y se va */
   function cameo(id, listo){
     var texto = SECCIONES[id];
-    var meta = Math.max(casa(), Math.min(ancho() * .3, ancho() - W() * 1.9));
+    /* solo se asoma de frente por uno de los laterales: se ve de la cintura para arriba */
+    var izq = Math.random() < .5, meta = 0, fuera = 0;
+    function mirarAlFrente(){ pose("frente"); }
+    /* se desliza ya inclinado, sin caminar ni cambiar de pose */
+    function deslizar(x, ms, easing, alTerminar){
+      parar();
+      if (lento){ ubicar(x); alTerminar(); return; }
+      var desde = posX;
+      paseo = abuelo.animate([{ transform: "translateX(" + desde + "px)" }, { transform: "translateX(" + x + "px)" }],
+        { duration: ms, easing: easing, fill: "forwards" });
+      paseo.onfinish = function(){ ubicar(x); alTerminar(); };
+    }
     function mostrarla(){
-      darseVuelta("frente");
-      saltar(12, 480);
+      mirarAlFrente();
+      if (izq) globo.style.left = Math.max(0, -meta + 6) + "px";
+      else { globo.style.left = "auto"; globo.style.right = Math.max(0, meta + W() - ancho() + 6) + "px"; }
       decir(texto);
       moverBrazo([-100, -86, -104, -88, -102, -94], 1700, "ease-in-out");
       luego(function(){ moverBrazo([4, 0], 420, "ease-out"); }, 1900);
       luego(function(){
         callar();
-        if (Math.random() < .5) tirarMensaje(azar(AL_IRSE), "bordo");
-        moverA(ancho() + W() * .3, "correr", function(){ abuelo.hidden = true; abOcupado = false; estado = "fuera"; listo(); });
+        luego(function(){
+          globo.style.left = ""; globo.style.right = "";
+          deslizar(fuera, 520, "cubic-bezier(.5,0,.8,.4)", function(){
+            abuelo.hidden = true; abuelo.classList.remove("asoma", "asoma-der");
+            abuelo.style.bottom = ""; abOcupado = false; estado = "fuera"; listo();
+          });
+        }, 280);
       }, 2500);
     }
-    if (abuelo.hidden || estado === "fuera"){
-      mostrar(); ubicar(-W() * 1.4);
-      var ms = moverA(meta, "correr", function(){ frenar(mostrarla); });
-      if (ms && Math.random() < .6) luego(function(){ tirarMensaje(azar(AL_CORRER), "acento"); }, ms * .45);
-    } else moverA(meta, "correr", function(){ frenar(mostrarla); });
+    mirarAlFrente();
+    if (abuelo.hidden || estado === "fuera") mostrar();
+    abuelo.classList.add("asoma");
+    abuelo.classList.toggle("asoma-der", !izq);
+    abuelo.style.bottom = "calc(var(--vh,1vh) * 12)";
+    meta = izq ? -W() * .7 : ancho() - W() * .3;
+    fuera = izq ? -W() * 1.4 : ancho() + W() * .4;
+    ubicar(fuera);
+    deslizar(meta, 650, "cubic-bezier(.2,.8,.3,1)", mostrarla);
   }
 
   /* si lo tocás */
