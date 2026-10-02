@@ -1,0 +1,37 @@
+Tool: built-in image_gen
+References: prior slide, four original Juan turnarounds in a contact sheet, actual Honey jar, official icon sheet from the rebranding PDF.
+
+FOUR JUAN GENERATION
+Use case: ads-marketing. REVISE image 1, a premium Honey mustard Instagram carousel slide, vertical 4:5, requested final size 1080x1350px. The latest explicit user correction is crucial: show ONE distinct appearance of grandfather Juan FOR EACH PRODUCT VIRTUE. There are FOUR virtues, therefore there must be EXACTLY FOUR separate small Juan appearances — one per speech bubble, four bubbles total. Replace the prior arrangement of two Juans with two bubbles each.
+REFERENCE ROLES: image 1 is current image to redesign. Image 2 is a contact sheet of the FOUR original Juan turnarounds (front/back/right/left), absolute ground truth for his facial identity and clothing. Image 3 is the actual Honey jar product, ground truth for label and product. Image 4 is the official reference sheet of the four brand graphic icons; use these exact silhouettes/line art for the background pattern.
+
+MAIN HERO: ONE giant hyperrealistic Honey mustard jar perfectly centered on vertical axis, completely visible from gold lid to glass base, front label unobstructed and faithful to image 3. It should still be the largest and clearest subject: about 52-56% frame width and y=22-77%. A little realistic honey drizzle touches jar and lid. Jar stands on a tactile mound of photoreal mustard seeds and modest honeycomb, approximately 70% golden/yellow seeds and 30% warm brown seeds (never black). Seed density naturally and gradually decreases into the ochre background; no abrupt cutoff. Keep premium warm lighting, sharp focus everywhere.
+
+EXACTLY FOUR JUAN APPEARANCES, ONE PER VIRTUE: all four are clearly the SAME canonical character from image 2 but with different lively mid-speech expressions/gestures. Each is a SMALL cropped half-body cameo entering from an OUTER SIDE edge of the frame, never on the jar. About 55-60% the size of the Juans in image 1, clearly supporting the hero jar. Only head, shoulder, torso/upper apron and one animated arm are visible; crop body naturally at the outer side border so no lower bodies, trousers, shoes or legs anywhere. Place one cameo at each of these four positions, with enough space from jar and bubbles:
+A. TOP LEFT: Juan leans in from LEFT edge at y=26-46%, delighted open mid-word mouth, raised eyebrow and animated open hand gesturing toward honey.
+B. LOWER LEFT: a SEPARATE second Juan leans in from LEFT edge at y=63-81%, gleeful open mid-word mouth, hand gesturing that Honey is sweeter.
+C. TOP RIGHT: third Juan leans in from RIGHT edge at y=26-46%, enthusiastic open mid-word mouth, hand presenting naturally pure ingredients.
+D. LOWER RIGHT: fourth Juan leans in from RIGHT edge at y=63-81%, funny emphatic open mid-word mouth, finger or palm gesture emphasizing no preservatives.
+All four have same facial bone geometry: broad rounded face/cheeks, bulbous rounded nose, large ears, gray eyebrows, narrow warm eyes and spacing, smile/wrinkle pattern, peach skin, white hair under brown beret, cream rolled sleeves, brown vest, dark-brown apron with pocket, same animated proportions. Original references are clean shaven; do not add a mustache. Change only mouth, eyebrows, eyelids and gesture for each delivery. No other characters or background people.
+
+FOUR SPEECH BUBBLES, ONE PER JUAN, EXACT VERBATIM TEXT: Each cameo gets exactly ONE nearby compact rounded cream #EDE2CC bubble with thin dark brown #3D2116 outline and one small tail pointing clearly toward its own MOUTH. Large bold condensed dark brown text, readable on phone, centered in bubble. Keep all four bubbles OUTSIDE the jar silhouette and away from the authentic jar label, no touching each other. Place bubble near its associated side/head:
+A. TOP LEFT Juan says exactly: "CON MIEL REAL"
+B. LOWER LEFT Juan says exactly: "SABOR MÁS DULCE"
+C. TOP RIGHT Juan says exactly: "100% NATURAL"
+D. LOWER RIGHT Juan says exactly: "SIN CONSERVANTES"
+Exactly one occurrence of each phrase, no more. Preserve single I in MIEL (never MIIEL), accent on MÁS, numeral 100 and percent sign. Line breaks within one phrase are allowed. No additional headline, badge, label, leader line, paragraph, numeral, watermark or other free-floating text. Authentic printing on real jar remains visible and is allowed.
+
+BACKGROUND: edge-to-edge flat ochre/gold #C6822E with a subtle low-contrast ONE-TONE repeating wallpaper of the exact four official motifs from image 4 — outlined/filled small mustard seed cluster, smooth pointed mustard leaf with curved vein, soft rounded beret with nub, stylized five-petal flower. Crisp printed icon edges, no invented substitutes or photographic foliage. Photoreal only the glass jar, honey, seeds/honeycomb. All areas sharply in focus, no blur/bokeh/depth of field. Warm rustic-premium brand energy.
+CRITICAL AVOID: only 2 Juan appearances, duplicated faces fused together, Juan standing on lid, product partly cropped, bubble tails to hats, bubble overlaps with label, extra limbs, visible lower bodies/legs, mustache, misspelled phrases, very tiny unreadable type.
+
+FINAL SCALE EDIT
+Edit image 1 with ONE targeted layout correction: make ALL FOUR Juan appearances at the left/right edges noticeably SMALLER — uniformly scale each character to about 65% of his current rendered size. Keep one Juan in each corner/side position (top left, lower left, top right, lower right), each at the same vertical level as now and entering from the same outer border. All four still have open mid-speech mouths and distinct animated gestures, identical canonical faces/outfits from the four turnaround views in image 2, no legs. Each tiny cameo should look like a supporting frame character relative to the hero giant jar. Do not remove, combine or add Juans: exactly FOUR separated cameo appearances, one per virtue.
+
+KEEP THE FOUR SPEECH BUBBLES AT THEIR CURRENT LARGE, CLEAR SIZE AND CURRENT POSITIONS, preserve all borders and the EXACT text letter-for-letter:
+Top left: CON MIEL REAL
+Bottom left: SABOR MÁS DULCE
+Top right: 100% NATURAL
+Bottom right: SIN CONSERVANTES.
+As the characters become smaller, extend/re-angle only each speech-bubble's short tail so it points toward its own newly located Juan's open mouth. No bubble must overlap the jar or cover a face.
+
+Preserve the giant CENTERED completely visible Honey jar, authentic product label matching image 3, honey drizzle, mound of about 70% golden and 30% warm brown mustard seeds, honeycomb, gradual seed-to-ochre transition, crisp low-contrast background wallpaper using EXACT official icon shapes from image 4, overall warm lighting, 4:5 canvas and sharpness. Do not resize or move the jar, bubbles or text. No extra words, no blur, no new elements.
