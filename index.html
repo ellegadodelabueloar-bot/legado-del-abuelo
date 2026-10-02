@@ -77,17 +77,17 @@ a{color:inherit}
   background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.4),rgba(255,255,255,0));
   animation:et-brillo 3.6s ease-in-out infinite;z-index:0}
 @keyframes et-brillo{0%,15%{left:-80px}65%,100%{left:calc(100% + 80px)}}
-.envio-banner svg{position:relative;z-index:1;width:16px;height:16px;flex:none;color:#7FE8A8}
-.envio-banner .et-txt{position:relative;z-index:1;font-family:var(--display);font-weight:var(--disp-w);font-size:.9rem;letter-spacing:.01em;text-transform:uppercase;color:#9FE7BC}
+.envio-banner svg{position:relative;z-index:1;width:19px;height:19px;flex:none;color:#7FE8A8}
+.envio-banner .et-txt{position:relative;z-index:1;font-family:var(--display);font-weight:var(--disp-w);font-size:1.12rem;letter-spacing:.01em;text-transform:uppercase;color:#9FE7BC}
 .envio-banner .et-txt b{color:#F0C86A;font-weight:var(--disp-w)}
 .envio-banner .et-clock{position:relative;z-index:1;display:flex;align-items:center;gap:5px}
 .envio-banner .et-box{display:flex;flex-direction:column;align-items:center;justify-content:center;
   background:rgba(0,0,0,.32);border:1px solid rgba(240,200,74,.35);border-radius:7px;padding:3px 7px;min-width:2.6em;line-height:1}
-.envio-banner .et-box b{font-family:Arial,Helvetica,sans-serif;font-variant-numeric:tabular-nums;font-size:.98rem;font-weight:800;color:#F0C86A}
-.envio-banner .et-box i{font-style:normal;font-family:var(--tipo);font-weight:600;font-size:.52rem;letter-spacing:.04em;text-transform:uppercase;color:#9FE7BC;opacity:.85}
+.envio-banner .et-box b{font-family:Arial,Helvetica,sans-serif;font-variant-numeric:tabular-nums;font-size:1.2rem;font-weight:800;color:#F0C86A}
+.envio-banner .et-box i{font-style:normal;font-family:var(--tipo);font-weight:600;font-size:.62rem;letter-spacing:.04em;text-transform:uppercase;color:#9FE7BC;opacity:.85}
 .envio-banner .et-sep{color:#F0C86A;font-weight:800;opacity:.6}
-@media (max-width:620px){.envio-banner{padding:7px 10px;gap:6px}.envio-banner svg{width:13px;height:13px}.envio-banner .et-txt{font-size:.68rem}.envio-banner .et-box{padding:2px 5px;min-width:2.1em}.envio-banner .et-box b{font-size:.78rem}.envio-banner .et-box i{font-size:.42rem}}
-@media (max-width:420px){.envio-banner{gap:5px}.envio-banner .et-txt{font-size:.58rem}.envio-banner .et-box{min-width:1.9em}.envio-banner .et-box b{font-size:.7rem}}
+@media (max-width:620px){.envio-banner{padding:8px 10px;gap:7px}.envio-banner svg{width:15px;height:15px}.envio-banner .et-txt{font-size:.82rem}.envio-banner .et-box{padding:2px 6px;min-width:2.3em}.envio-banner .et-box b{font-size:.92rem}.envio-banner .et-box i{font-size:.5rem}}
+@media (max-width:420px){.envio-banner{gap:5px}.envio-banner .et-txt{font-size:.7rem}.envio-banner .et-box{min-width:2.1em}.envio-banner .et-box b{font-size:.84rem}}
 @media (max-width:620px){.topnav-row{padding:13px 13px 15px}.brandmark{width:112px}.pill button{width:34px;height:32px}.pill button svg{width:17px;height:17px}.iglink{width:38px;height:38px}}
 
 /* ---------- escenario ---------- */
@@ -1176,6 +1176,18 @@ img.ing{object-fit:contain;pointer-events:none;-webkit-user-select:none;user-sel
   .ticket button .ic-carro{width:12px;height:12px}
   .tk-confia{font-size:.44rem}
 }
+@media (max-width:480px){
+  .ticket{min-width:98px;max-width:110px;padding:7px 7px 6px!important;transform-origin:50% -26px;border-radius:10px}
+  .tk-hilo{height:26px}
+  .ticket .tk-nombre{margin:5px 0 2px}
+  .ticket .tk-nombre b{font-size:.74rem}
+  .ticket .p{font-size:.92rem!important}
+  .ticket .antes{font-size:.54rem}
+  .ticket button{min-height:26px!important;padding:5px!important}
+  .ticket button b{font-size:.44rem!important}
+  .ticket button .ic-carro{width:10px;height:10px}
+  .tk-confia{font-size:.38rem}
+}
 
 /* el frasquito entero dentro de su cuadradito */
 #cartLista .fila .ph,#comboFilas .fila .ph{padding:5px;box-sizing:border-box}
@@ -1302,7 +1314,7 @@ img.ing{object-fit:contain;pointer-events:none;-webkit-user-select:none;user-sel
 <nav class="topnav">
       <div class="envio-banner" id="envioTimer">
         <span class="et-brillo" aria-hidden="true"></span>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v7H3zM14 10h4l3 3v1h-7zM3 7v9h1M6.5 19.5a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2ZM17 19.5a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        <svg class="camion" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.6 5.6h12.2v9.8H1.6z" fill="currentColor"/><path d="M14.2 8.4h3.9l3.1 3.3v3.7h-7z" fill="currentColor" opacity=".8"/><circle cx="7" cy="17.4" r="2.2" fill="currentColor"/><circle cx="17.4" cy="17.4" r="2.2" fill="currentColor"/><circle cx="7" cy="17.4" r=".8" fill="#0C2716"/><circle cx="17.4" cy="17.4" r=".8" fill="#0C2716"/></svg>
         <span class="et-txt">Envío <b>gratis</b> a Quilmes</span>
         <span class="et-clock" id="envioClock">
           <span class="et-box"><b id="envioH">48</b><i>hs</i></span>
