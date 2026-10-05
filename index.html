@@ -199,6 +199,8 @@ section.band{padding-block:clamp(72px,10vw,128px)}
 .pedido p{max-width:46ch;margin:0 auto 34px;opacity:.86}
 .acciones{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .acciones .btn{width:auto}
+.acciones .btn-unico{width:100%;max-width:700px;padding:20px 28px;font-size:1.08rem}
+.acciones .btn-unico svg{width:1.25em;height:1.25em}
 
 footer{background:var(--tinta);padding-block:44px;text-align:center}
 footer .brandmark{width:200px;margin:0 auto 18px;color:var(--crema)}
@@ -1092,6 +1094,12 @@ footer a{text-decoration:none;border-bottom:1px solid rgba(216,195,158,.3)}
     radial-gradient(120% 120% at 30% 0%,#1F5C39 0%,#123A24 55%,#0C2617 100%) padding-box,
     linear-gradient(135deg,#FBEBC0,#E9BE63 18%,#8A5516 42%,#F3CE7A 66%,#C6822E 88%,#8A5516) border-box;
   box-shadow:0 34px 70px -28px #000,0 0 60px -18px rgba(233,190,99,.5)}
+.ce-caja{pointer-events:auto}
+.ce-x{position:absolute;top:10px;right:10px;z-index:2;width:36px;height:36px;display:grid;place-items:center;padding:0;
+  border-radius:50%;border:1.5px solid rgba(243,234,216,.35);background:rgba(0,0,0,.28);color:#F3EAD8;cursor:pointer;
+  transition:background .2s,color .2s,transform .2s}
+.ce-x svg{width:16px;height:16px}
+.ce-x:hover{background:#F3EAD8;color:#123A24;transform:rotate(90deg)}
 .ce-luz{position:absolute;top:-60%;bottom:-60%;width:70px;left:-120px;transform:skewX(-18deg);
   background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.35),rgba(255,255,255,0));
   animation:ce-brillo 2.6s ease-in-out .5s}
@@ -1724,7 +1732,7 @@ img.ing{object-fit:contain;pointer-events:none;-webkit-user-select:none;user-sel
 </div>
 <div class="toast" id="toast" role="status"></div>
 
-<div class="cartel-envio" id="cartelEnvio" role="status" aria-live="polite" hidden><div class="ce-caja"><span class="ce-luz" aria-hidden="true"></span><div class="ce-camion" aria-hidden="true"><svg class="camion" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.6 5.6h12.2v9.8H1.6z" fill="currentColor"/><path d="M14.2 8.4h3.9l3.1 3.3v3.7h-7z" fill="currentColor" opacity=".8"/><circle cx="7" cy="17.4" r="2.2" fill="currentColor"/><circle cx="17.4" cy="17.4" r="2.2" fill="currentColor"/><circle cx="7" cy="17.4" r=".8" fill="#0C2716"/><circle cx="17.4" cy="17.4" r=".8" fill="#0C2716"/></svg></div><p class="ce-arriba">Buenas noticias</p><p class="ce-grande">Envío <b>gratis</b></p><p class="ce-abajo">a todo Quilmes</p><span class="ce-linea" aria-hidden="true"></span><p class="ce-firma">Legado del Abuelo · Mostazas caseras</p></div></div>
+<div class="cartel-envio" id="cartelEnvio" role="status" aria-live="polite" hidden><div class="ce-caja"><button type="button" class="ce-x" id="cartelEnvioX" aria-label="Cerrar aviso"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg></button><span class="ce-luz" aria-hidden="true"></span><div class="ce-camion" aria-hidden="true"><svg class="camion" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.6 5.6h12.2v9.8H1.6z" fill="currentColor"/><path d="M14.2 8.4h3.9l3.1 3.3v3.7h-7z" fill="currentColor" opacity=".8"/><circle cx="7" cy="17.4" r="2.2" fill="currentColor"/><circle cx="17.4" cy="17.4" r="2.2" fill="currentColor"/><circle cx="7" cy="17.4" r=".8" fill="#0C2716"/><circle cx="17.4" cy="17.4" r=".8" fill="#0C2716"/></svg></div><p class="ce-arriba">Buenas noticias</p><p class="ce-grande">Envío <b>gratis</b></p><p class="ce-abajo">a todo Quilmes</p><span class="ce-linea" aria-hidden="true"></span><p class="ce-firma">Legado del Abuelo · Mostazas caseras</p></div></div>
 <div class="ab-msgs" id="abMsgs" aria-hidden="true"></div>
 <div class="abuelo" id="abuelo" hidden>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -2204,7 +2212,7 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
     catalogo:    "Cuatro sabores. La Antigua vuela, eh.",
     combo:       "Armá tu caja: desde 3 frascos, 5% off.",
     resenas:     "Mirá lo que dicen los que ya probaron.",
-    pedido:      "¿Me escribís? Y te lo preparo."
+    pedido:      "¿Ya elegiste? Si no, ¡tocá Armar mi combo!"
   };
   var AL_CORRER = ["¡Pasen, pasen!", "¡Recién hechas!", "¡Permiso, que llevo mostaza!", "¡Ahí voy!", "¡Uy, se me hace tarde!"];
   var AL_IRSE   = ["¡Me voy a la cocina!", "¡Ya vuelvo!", "¡Nos vemos!", "¡Voy a moler más semillas!"];
@@ -2679,7 +2687,9 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
     mostrar();
     frasco.style.opacity = 0; globo.style.opacity = 0; angBrazo = 0; brazo.style.transform = "";
     ubicar(-W() * 1.4);
-    var meta = Math.max(casa(), Math.min(ancho() * .36, ancho() - W() * 1.9));
+    /* el globo sale hacia la derecha: que entero quepa en pantalla (en el celu es largo) */
+    var anchoGlobo = Math.min(300, ancho() * .8);
+    var meta = Math.max(casa(), Math.min(ancho() * .36, ancho() - W() * 1.9, ancho() - anchoGlobo - 14));
     var ms = moverA(meta, "correr", function(){
       frenar(function(){
         darseVuelta("frente");
@@ -2692,7 +2702,11 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
         /* una reverencia de agradecimiento */
         luego(function(){ if (!lento) cuerpo.animate([{ transform: "rotate(0) scale(1)" }, { transform: "rotate(4deg) scale(.96,1)", offset: .45 }, { transform: "rotate(0) scale(1)" }],
           { duration: 760, easing: "ease-in-out" }); }, 3300);
-        luego(function(){ callar(); moverA(casa(), "caminar", function(){ darseVuelta("frente"); saludoHecho = true; listo(); }); }, 4300);
+        luego(function(){
+          callar();
+          saludoHecho = true;
+          moverA(-W() * 1.4, "caminar", function(){ abuelo.hidden = true; abOcupado = false; estado = "fuera"; listo(); });
+        }, 4300);
       });
     });
     if (ms){
@@ -2783,12 +2797,10 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
     gestoT = setTimeout(gestoAlAzar, 2600 + Math.random() * 1800);
   }
   function quedarse(){
+    /* no se queda esperando: termina lo suyo y se va enseguida */
     estado = "quieto";
-    abuelo.classList.add("quieto");
-    reposoBrazo();
     clearTimeout(gestoT); clearTimeout(salidaT);
-    gestoT = setTimeout(gestoAlAzar, 2200);
-    salidaT = setTimeout(irse, 8500);
+    salidaT = setTimeout(irse, 700);
   }
   function irse(){
     if (estado !== "quieto") return;
@@ -2992,51 +3004,74 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
     setTimeout(avisar, 9000 + cola.length * 7000); /* por las dudas, nunca deja colgado el carrito */
   }
 
-  cuerpo.addEventListener("click", function(){ if (estado === "quieto") encolar(escenaToque); });
-
-  /* pasa corriendo cuando la persona llega a cada sección (una vez cada una) */
+  /* se asoma apenas la persona llega a cada sección (una vez cada una).
+     Si justo está ocupado, la sección queda pendiente y sale en cuanto se libera. */
   if ("IntersectionObserver" in window && !lento){
+    var enVista = [];
+    var intentarCameo = function(){
+      if (!saludoHecho || estado === "activo" || cola.length) return;
+      if (Date.now() - ultimoCameo < 1800) return;
+      /* si pasó por varias secciones, dice la de más abajo (la última a la que llegó)
+         y da por vistas las anteriores, para no soltar un cartel viejo que ya no importa */
+      var orden = Object.keys(SECCIONES), ultima = null, mejor = 0;
+      orden.forEach(function(k){
+        if (enVista.indexOf(k) < 0 || visto[k]) return;
+        var r = document.getElementById(k).getBoundingClientRect();
+        var cubierto = Math.min(r.bottom, innerHeight) - Math.max(r.top, 0);
+        /* sale cuando la sección ya cubre unos 3/4 de la pantalla (o casi toda, si es más baja que eso) */
+        if (cubierto >= Math.min(innerHeight * .75, r.height * .9) && cubierto > mejor){ mejor = cubierto; ultima = k; }
+      });
+      if (!ultima) return;
+      var tope = orden.indexOf(ultima);
+      orden.forEach(function(k, n){ if (n <= tope && enVista.indexOf(k) >= 0) visto[k] = true; });
+      ultimoCameo = Date.now();
+      encolar(function(listo){ cameo(ultima, listo); });
+    };
     var obsAb = new IntersectionObserver(function(entradas){
       entradas.forEach(function(e){
-        var id = e.target.id;
-        if (!e.isIntersecting || visto[id] || !saludoHecho) return;
-        if (estado === "activo" || Date.now() - ultimoCameo < 11000) return;
-        visto[id] = true; ultimoCameo = Date.now();
-        encolar(function(listo){ cameo(id, listo); });
+        var id = e.target.id, i = enVista.indexOf(id);
+        if (i >= 0) enVista.splice(i, 1);
+        if (e.isIntersecting) enVista.push(id);
       });
-    }, { threshold: .4 });
+      intentarCameo();
+    }, { threshold: 0, rootMargin: "0px 0px -32% 0px" });
     Object.keys(SECCIONES).forEach(function(id){ var s = document.getElementById(id); if (s) obsAb.observe(s); });
+    setInterval(intentarCameo, 300);
   }
 
   /* al entrar a la página viene corriendo a saludar */
   var yaSaludo = false;
   try { yaSaludo = sessionStorage.getItem("lda-hola") === "1"; } catch (e) {}
-  function cartelEnvio(listo){
-    var c = document.getElementById("cartelEnvio");
-    if (!c){ listo(); return; }
+  /* el aviso de envío gratis: aparece a los 4 segundos y se queda hasta que lo cierren con la cruz */
+  function cartelEnvio(){
+    var c = document.getElementById("cartelEnvio"), x = document.getElementById("cartelEnvioX");
+    if (!c) return;
+    var caja = c.querySelector(".ce-caja"), cerrado = false;
     c.hidden = false;
-    var caja = c.querySelector(".ce-caja");
-    if (lento || !c.animate){
-      c.style.opacity = 1;
-      setTimeout(function(){ c.style.opacity = 0; c.hidden = true; listo(); }, 2600);
-      return;
+    function cerrar(){
+      if (cerrado) return; cerrado = true;
+      document.removeEventListener("keydown", tecla);
+      if (lento || !c.animate){ c.hidden = true; return; }
+      caja.animate([{ transform: "none", opacity: 1 }, { transform: "translateY(-38px) scale(.92)", opacity: 0 }],
+        { duration: 380, easing: "cubic-bezier(.5,0,.75,.4)", fill: "forwards" });
+      c.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 380, fill: "forwards" });
+      setTimeout(function(){ c.hidden = true; }, 390);
     }
+    function tecla(e){ if (e.key === "Escape") cerrar(); }
+    if (x) x.addEventListener("click", cerrar);
+    document.addEventListener("keydown", tecla);
+    if (lento || !c.animate){ c.style.opacity = 1; return; }
     c.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 320, fill: "forwards" });
     caja.animate([
       { opacity: 0, transform: "translateY(26px) scale(.82) rotate(-2.5deg)" },
       { opacity: 1, transform: "translateY(-6px) scale(1.04) rotate(1deg)", offset: .55 },
       { opacity: 1, transform: "none" }
     ], { duration: 620, easing: "cubic-bezier(.3,1.35,.4,1)", fill: "forwards" });
-    setTimeout(function(){
-      caja.animate([{ transform: "none", opacity: 1 }, { transform: "translateY(-38px) scale(.92)", opacity: 0 }],
-        { duration: 420, easing: "cubic-bezier(.5,0,.75,.4)", fill: "forwards" });
-      c.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 420, fill: "forwards" });
-      setTimeout(function(){ c.hidden = true; listo(); }, 430);
-    }, 2500);
   }
+  setTimeout(cartelEnvio, 4000);
   if (!yaSaludo){
     setTimeout(function(){
-      cartelEnvio(function(){ encolar(entradaGrande); });
+      encolar(entradaGrande);
       try { sessionStorage.setItem("lda-hola", "1"); } catch (e) {}
     }, 650);
   } else saludoHecho = true;
@@ -3727,10 +3762,7 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
   });
 
   $("#acciones").innerHTML =
-    '<a class="btn" id="pedirWa" href="' + wppLink(null) + '" target="_blank" rel="noopener">' +
-      (WPP ? WA_ICON + "Hacer mi pedido" : IG_ICON + "Escribir por Instagram") + '</a>' +
-    '<a class="btn ghost" href="#combo">' + CART_ICON + 'Armar mi combo</a>' +
-    (WPP ? "" : '<div style="flex-basis:100%"><span class="pendiente">Falta cargar el número de WhatsApp</span></div>');
+    '<a class="btn btn-unico" href="#combo">' + CART_ICON + 'Armar mi combo</a>';
 
   /* ====== NAV ====== */
   var btnCarrito = $("#navCarrito");
