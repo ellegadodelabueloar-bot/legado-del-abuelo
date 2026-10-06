@@ -1794,7 +1794,7 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
     { id:"honey", ing:"miel", ingImg:"honey", tintaIng:"#B4731F", ingNombre:"La Honey", name:"Honey", sub:"Mostaza con miel", price:"9500",
       accent:"#C6822E", pat:"#E0A64E", bg1:"#55321A", bg2:"#2A190C", ink:"#C6822E", panel:"#38230F",
       desc:"Primero se siente la miel y después la mostaza. Queda suave y con un final dulce.",
-      heat:1, pairs:["Pollo al horno","Papas rústicas","Sándwich de cerdo","Aderezo de ensalada"] },
+      heat:1, pairs:["Pollo al horno","Papas rústicas","Cerdo","Aderezo de ensalada"] },
     { id:"suave", ing:"granos-amarillos", tintaIng:"#5F6B22", ingNombre:"La Suave", name:"Suave", sub:"La de todos los días", price:"8500",
       accent:"#D8C39E", pat:"#E8DAB8", bg1:"#4F4527", bg2:"#241D10", ink:"#D8C39E", panel:"#33301B",
       desc:"Cremosa y pareja, aporta sabor real a mostaza para el día a día.",
@@ -1802,12 +1802,12 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
     { id:"picante", ing:"chile", ingImg:"picante", tintaIng:"#8E1B10", ingNombre:"La Picante", name:"Picante", sub:"Con ají y pimentón", price:"8500",
       accent:"#78120B", pat:"#B8402C", bg1:"#521510", bg2:"#240806", ink:"#C2452F", panel:"#3A1109",
       desc:"Picor adaptado al paladar argentino, con un sabor intenso y sabroso.",
-      heat:4, pairs:["Asado","Provoleta","Chorizo","Quesos duros"] }
+      heat:4, pairs:["Asado","Provoleta","Chorizo","Quesos duros","Milanesa","Pancho"] }
 ,
     { id:"antigua", ing:"granos-viejos", ingImg:"antigua", tintaIng:"#8A5A22", ingNombre:"A la Antigua", name:"Antigua", sub:"Mostaza a la antigua", price:"9500", solo:true, limitada:true,
       accent:"#A9763C", pat:"#C99B5E", bg1:"#4C3520", bg2:"#241809", ink:"#C99B5E", panel:"#35240F",
       desc:"De grano entero, con un blend de semillas marrones y claras que dosifica el picor y suma carácter. La más sofisticada de las cuatro.",
-      heat:0, pairs:["Tabla de fiambres","Bondiola","Cordero","Papas al horno"] }
+      heat:0, pairs:["Tabla de fiambres","Bondiola","Cordero","Pescado","Papas al horno"] }
   ];
   var TRES = FLAVORS.filter(function(f){ return !f.solo; });   // las del Combo Degustación
   var COMBINABLES = FLAVORS;                                   // todas se pueden combinar a mano
