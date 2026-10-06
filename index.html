@@ -3056,7 +3056,7 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
   /* al entrar a la página viene corriendo a saludar */
   var yaSaludo = false;
   try { yaSaludo = sessionStorage.getItem("lda-hola") === "1"; } catch (e) {}
-  /* el aviso de envío gratis: aparece a los 4 segundos y se queda hasta que lo cierren con la cruz */
+  /* el aviso de envío gratis: aparece a los 6 segundos y se queda hasta que lo cierren con la cruz */
   function cartelEnvio(){
     var c = document.getElementById("cartelEnvio"), x = document.getElementById("cartelEnvioX");
     if (!c) return;
@@ -3082,7 +3082,7 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
       { opacity: 1, transform: "none" }
     ], { duration: 620, easing: "cubic-bezier(.3,1.35,.4,1)", fill: "forwards" });
   }
-  setTimeout(cartelEnvio, 4000);
+  setTimeout(cartelEnvio, 6000);
   if (!yaSaludo){
     setTimeout(function(){
       encolar(entradaGrande);
