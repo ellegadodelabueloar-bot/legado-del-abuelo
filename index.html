@@ -81,7 +81,8 @@ a{color:inherit}
 .envio-banner .et-txt{position:relative;z-index:1;font-family:var(--display);font-weight:var(--disp-w);font-size:1.12rem;letter-spacing:.01em;text-transform:uppercase;color:#9FE7BC}
 .envio-banner .et-txt b{color:#F0C86A;font-weight:var(--disp-w)}
 .envio-banner .et-txt{display:flex;flex-direction:column;align-items:center;line-height:1}
-.envio-banner .et-top{display:block;font-family:var(--display);font-weight:var(--disp-w);font-size:max(.64rem,.62em);letter-spacing:.12em;color:#F0C86A;margin-bottom:1px}
+.envio-banner .et-top{display:block;font-family:var(--display);font-weight:var(--disp-w);font-size:max(.64rem,.62em);letter-spacing:.12em;color:#F0C86A;margin-bottom:1px;text-indent:.12em;padding-left:calc(var(--camion-w,19px) + 9px)}
+@media (max-width:620px){.envio-banner .et-txt{--camion-w:15px}}
 .envio-banner .et-main{display:flex;align-items:center;justify-content:center;gap:9px;line-height:1}
 .envio-banner .et-clock{position:relative;z-index:1;display:flex;align-items:center;gap:5px}
 .envio-banner .et-box{display:flex;flex-direction:column;align-items:center;justify-content:center;
