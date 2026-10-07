@@ -1346,7 +1346,7 @@ img.ing{object-fit:contain;pointer-events:none;-webkit-user-select:none;user-sel
         <span class="et-brillo" aria-hidden="true"></span>
         <span class="et-txt"><small class="et-top">¡Aprovechá!</small><span class="et-main"><svg class="camion" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.6 5.6h12.2v9.8H1.6z" fill="currentColor"/><path d="M14.2 8.4h3.9l3.1 3.3v3.7h-7z" fill="currentColor" opacity=".8"/><circle cx="7" cy="17.4" r="2.2" fill="currentColor"/><circle cx="17.4" cy="17.4" r="2.2" fill="currentColor"/><circle cx="7" cy="17.4" r=".8" fill="#0C2716"/><circle cx="17.4" cy="17.4" r=".8" fill="#0C2716"/></svg><span>Envío <b>gratis</b> a Quilmes</span></span></span>
         <span class="et-clock" id="envioClock">
-          <span class="et-box"><b id="envioH">48</b><i>hs</i></span>
+          <span class="et-box"><b id="envioH">72</b><i>hs</i></span>
           <span class="et-sep">:</span>
           <span class="et-box"><b id="envioM">00</b><i>min</i></span>
           <span class="et-sep">:</span>
@@ -3833,21 +3833,24 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
     addEventListener("orientationchange", fijarAlto);
   })();
 
-  /* ====== CONTADOR ENVÍO GRATIS ====== */
+  /* ====== CONTADOR ENVÍO GRATIS: 72 horas, y cuando llega a cero arranca otra vez ====== */
   (function(){
-    var DOS_DIAS = 2 * 24 * 60 * 60 * 1000;
+    var DURACION = 72 * 60 * 60 * 1000, CLAVE = "lda-envio-limite-72h";
     var clock = $("#envioClock");
     var elH = $("#envioH"), elM = $("#envioM"), elS = $("#envioS");
     if (!clock || !elH || !elM || !elS) return;
+    function guardar(v){ try { localStorage.setItem(CLAVE, v); } catch (e) {} }
+    function nuevoLimite(){ var v = Date.now() + DURACION; guardar(v); return v; }
     function leerLimite(){
-      var v = +localStorage.getItem("lda-envio-limite");
-      if (!v || v < Date.now()) { v = Date.now() + DOS_DIAS; localStorage.setItem("lda-envio-limite", v); }
+      var v = 0;
+      try { v = +localStorage.getItem(CLAVE); } catch (e) {}
+      if (!v || v <= Date.now() || v > Date.now() + DURACION) v = nuevoLimite();
       return v;
     }
     var limite = leerLimite();
     function pintar(){
       var rest = limite - Date.now();
-      if (rest <= 0){ limite = Date.now() + DOS_DIAS; localStorage.setItem("lda-envio-limite", limite); rest = DOS_DIAS; }
+      if (rest <= 0){ limite = nuevoLimite(); rest = DURACION; }
       var h = Math.floor(rest / 3600000);
       var m = Math.floor((rest % 3600000) / 60000);
       var s = Math.floor((rest % 60000) / 1000);
