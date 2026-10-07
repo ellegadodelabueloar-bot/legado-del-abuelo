@@ -3833,24 +3833,17 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
     addEventListener("orientationchange", fijarAlto);
   })();
 
-  /* ====== CONTADOR ENVÍO GRATIS: 72 horas, y cuando llega a cero arranca otra vez ====== */
+  /* ====== CONTADOR ENVÍO GRATIS: ciclo común de 72 horas para todos los visitantes.
+     No se reinicia al entrar: corre desde una fecha fija y, cuando llega a cero, arranca otro ciclo. ====== */
   (function(){
-    var DURACION = 72 * 60 * 60 * 1000, CLAVE = "lda-envio-limite-72h";
+    var DURACION = 72 * 60 * 60 * 1000;
+    var INICIO = 1791401585287;   /* arranque del primer ciclo (7 oct 2026) */
     var clock = $("#envioClock");
     var elH = $("#envioH"), elM = $("#envioM"), elS = $("#envioS");
     if (!clock || !elH || !elM || !elS) return;
-    function guardar(v){ try { localStorage.setItem(CLAVE, v); } catch (e) {} }
-    function nuevoLimite(){ var v = Date.now() + DURACION; guardar(v); return v; }
-    function leerLimite(){
-      var v = 0;
-      try { v = +localStorage.getItem(CLAVE); } catch (e) {}
-      if (!v || v <= Date.now() || v > Date.now() + DURACION) v = nuevoLimite();
-      return v;
-    }
-    var limite = leerLimite();
     function pintar(){
-      var rest = limite - Date.now();
-      if (rest <= 0){ limite = nuevoLimite(); rest = DURACION; }
+      var t = Date.now() - INICIO;
+      var rest = DURACION - (((t % DURACION) + DURACION) % DURACION);
       var h = Math.floor(rest / 3600000);
       var m = Math.floor((rest % 3600000) / 60000);
       var s = Math.floor((rest % 60000) / 1000);
