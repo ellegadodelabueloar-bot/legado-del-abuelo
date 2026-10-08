@@ -1800,6 +1800,52 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
      Mientras esté vacía, la página funciona igual y no guarda nada. */
   var PEDIDOS_URL = "https://script.google.com/macros/s/AKfycbw_2c4iGoCnENwARD1ENNUg6rjajHs6vBgr3-a7EP1PYo4HryUy13B49gX93i4nM9K2/exec";
 
+  /* ---------- métricas anónimas ----------
+     Sin cookies, sin datos personales y sin pedirle nada a la persona: se anota que hubo una visita, de dónde vino
+     (Instagram, TikTok, directo…), si entró desde el celu, y hasta dónde llegó (carrito, datos, pedido).
+     Para que tus propias visitas no cuenten: abrí la web una vez con ?medir=no (y ?medir=si para volver a contar). */
+  var medirOff = false, sid = "";
+  try {
+    if (/[?&]medir=no(&|$)/.test(location.search)) localStorage.setItem("lda-no-medir", "1");
+    if (/[?&]medir=si(&|$)/.test(location.search)) localStorage.removeItem("lda-no-medir");
+    medirOff = localStorage.getItem("lda-no-medir") === "1" || navigator.doNotTrack === "1" || window.doNotTrack === "1" ||
+      (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) && PEDIDOS_URL.indexOf("script.google.com") > -1);
+    sid = sessionStorage.getItem("lda-sid") || "";
+    if (!sid){ sid = Math.random().toString(36).slice(2, 8) + Date.now().toString(36).slice(-4); sessionStorage.setItem("lda-sid", sid); }
+  } catch (e) { medirOff = true; }
+  function origenVisita(){
+    var ua = navigator.userAgent || "", q = location.search.match(/[?&]utm_source=([^&]+)/);
+    if (q) return decodeURIComponent(q[1]).slice(0, 40);
+    if (/Instagram/i.test(ua)) return "Instagram";
+    if (/FBAN|FBAV|FB_IAB/i.test(ua)) return "Facebook";
+    if (/TikTok|musical_ly|BytedanceWebview/i.test(ua)) return "TikTok";
+    var r = ""; try { r = new URL(document.referrer).hostname.replace(/^www\./, ""); } catch (e) {}
+    if (!r || r === location.hostname.replace(/^www\./, "")) return "Directo";
+    if (/instagram/.test(r)) return "Instagram";
+    if (/facebook|fb\./.test(r)) return "Facebook";
+    if (/tiktok/.test(r)) return "TikTok";
+    if (/google/.test(r)) return "Google";
+    if (/whatsapp|wa\.me/.test(r)) return "WhatsApp";
+    return r.slice(0, 40);
+  }
+  function medir(evento, detalle, unaVez){
+    if (!PEDIDOS_URL || medirOff) return;
+    try {
+      if (unaVez){
+        if (sessionStorage.getItem("lda-ev-" + evento)) return;
+        sessionStorage.setItem("lda-ev-" + evento, "1");
+      }
+      var cuerpo = { tipo: "evento", sid: sid, evento: evento, detalle: detalle || "" };
+      if (evento === "visita"){
+        cuerpo.origen = origenVisita();
+        cuerpo.dispositivo = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent || "") ? "Celular" : "Computadora";
+      }
+      fetch(PEDIDOS_URL, { method: "POST", mode: "no-cors", keepalive: true,
+        headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(cuerpo) });
+    } catch (e) {}
+  }
+  medir("visita", "", true);
+
   var FLAVORS = [
     { id:"honey", ing:"miel", ingImg:"honey", tintaIng:"#B4731F", ingNombre:"La Honey", name:"Honey", sub:"Mostaza con miel", price:"9500",
       accent:"#C6822E", pat:"#E0A64E", bg1:"#55321A", bg2:"#2A190C", ink:"#C6822E", panel:"#38230F",
@@ -1923,6 +1969,7 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
   }
   function addToCart(id, d, esperar){
     cart[id] = Math.max(0, (cart[id] || 0) + d);
+    if (d > 0) medir("agrego_carrito", id);
     recalcDeg();
     saveCart(); paintCart();
     if (d > 0 && !esperar) abrirCarritoSiHaceFalta();
@@ -1969,6 +2016,7 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
   var enDatos = false;
   function pasoCarrito(datos){
     enDatos = !!datos;
+    if (enDatos) medir("paso_datos", "", true);
     $("#cartDatos").hidden = !enDatos;
     $("#cartSeguir").hidden = enDatos || !WPP;
     sincroCarrito();
@@ -2072,7 +2120,7 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
   });
   pintarPago();
 
-  function openCart(){ abueloCarrito(true); $("#drawer").classList.add("on"); $("#velo").classList.add("on"); $("#drawer").setAttribute("aria-hidden","false"); $("#drawerX").focus(); }
+  function openCart(){ medir("abrio_carrito", "", true); abueloCarrito(true); $("#drawer").classList.add("on"); $("#velo").classList.add("on"); $("#drawer").setAttribute("aria-hidden","false"); $("#drawerX").focus(); }
   function closeCart(){ abueloCarrito(false); pasoCarrito(false); $("#drawer").classList.remove("on"); $("#velo").classList.remove("on"); $("#drawer").setAttribute("aria-hidden","true"); }
   if ($("#cartFab")) $("#cartFab").addEventListener("click", openCart);
   $("#drawerX").addEventListener("click", closeCart);
@@ -2134,7 +2182,7 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
   });
   $("#comboAdd").addEventListener("click", function(){
     var r = resumir(combo);
-    COMBINABLES.forEach(function(f){ cart[f.id] += combo[f.id]; });
+    COMBINABLES.forEach(function(f){ cart[f.id] += combo[f.id]; if (combo[f.id] > 0) medir("agrego_carrito", f.id); });
     var pAdd = descPct(r.n);
     saveCart(); paintCart();
     toast("Sumaste tu combo de " + frascos(r.n) + " al pedido" + (pAdd ? " con " + pctTxt(pAdd) + " off" : ""));
