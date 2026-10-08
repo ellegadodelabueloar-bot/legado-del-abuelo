@@ -289,7 +289,8 @@ footer a{text-decoration:none;border-bottom:1px solid rgba(216,195,158,.3)}
 .drawer .pie{border-top:2px solid var(--tinta);padding-top:14px;margin-top:14px;display:grid;gap:10px}
 .drawer .pie .total{margin:0}
 /* todo el carrito se desplaza: así se llega a los datos y a los botones aunque la pantalla sea chica o la letra del celu esté grande */
-.drawer{overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.drawer{overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+  bottom:auto;height:100vh;height:calc(var(--vh,1vh) * 100);padding-bottom:calc(90px + env(safe-area-inset-bottom,0px))}
 .drawer .lista{flex:none;overflow:visible}
 .drawer header{position:sticky;top:calc(-20px - env(safe-area-inset-top,0px));z-index:2;background:var(--papel);
   margin:calc(-20px - env(safe-area-inset-top,0px)) -18px 16px;padding:calc(20px + env(safe-area-inset-top,0px)) 18px 10px}
@@ -1795,6 +1796,9 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
      WPP: número de WhatsApp con código de país, sin + ni espacios (ej "5491122334455").
      Mientras esté vacío, los botones de pedido llevan a Instagram. */
   var WPP = "541169387182";
+  /* Donde se anotan los pedidos: la URL de la aplicación web de Google Apps Script (planilla de Google Sheets).
+     Mientras esté vacía, la página funciona igual y no guarda nada. */
+  var PEDIDOS_URL = "https://script.google.com/macros/s/AKfycbw_2c4iGoCnENwARD1ENNUg6rjajHs6vBgr3-a7EP1PYo4HryUy13B49gX93i4nM9K2/exec";
 
   var FLAVORS = [
     { id:"honey", ing:"miel", ingImg:"honey", tintaIng:"#B4731F", ingNombre:"La Honey", name:"Honey", sub:"Mostaza con miel", price:"9500",
@@ -2021,6 +2025,29 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
       localStorage.setItem("lda-datos", JSON.stringify(g));
     } catch (e) {}
   }
+
+
+  /* ---------- anota el pedido en la planilla cuando la persona lo envía ---------- */
+  var ultimoRegistro = { texto: "", t: 0 };
+  function registrarPedido(texto, d){
+    if (!PEDIDOS_URL || !texto) return;
+    var ahora = Date.now();
+    if (ultimoRegistro.texto === texto && ahora - ultimoRegistro.t < 15000) return;   /* no duplicar si toca dos veces */
+    ultimoRegistro = { texto: texto, t: ahora };
+    var cuerpo = JSON.stringify({
+      fecha: new Date(ahora).toLocaleString("es-AR", { timeZone: "America/Argentina/Buenos_Aires" }),
+      nombre: d.n || "", domicilio: d.d || "", telefono: d.t || "", email: d.m || "",
+      pago: pagoSel || "", pedido: texto
+    });
+    try {
+      fetch(PEDIDOS_URL, { method: "POST", mode: "no-cors", keepalive: true,
+        headers: { "Content-Type": "text/plain;charset=utf-8" }, body: cuerpo });
+    } catch (e) {}
+  }
+  $("#cartWa").addEventListener("click", function(){
+    registrarPedido(textoDe($("#cartWa")), { n: cdNombre.value.trim(), d: cdDom.value.trim(), t: cdTel.value.trim(), m: cdMail.value.trim() });
+  });
+
   function cierrePago(){ return pagoSel ? "\n\n" + CIERRE[pagoSel] : ""; }
   function pintarPago(){
     [].forEach.call(document.querySelectorAll(".pago-op"), function(b){
@@ -2189,6 +2216,7 @@ var ASSET={'assets/ing/antigua.png':'data:image/png;base64,iVBORw0KGgoAAAANSUhEU
       return;
     }
     refrescarEnvio();
+    registrarPedido(armarTexto(), { n: mdNombre.value.trim(), d: mdDom.value.trim(), t: mdTel.value.trim(), m: mdMail.value.trim() });
     try { localStorage.setItem("lda-datos", JSON.stringify({ n: mdNombre.value.trim(), d: mdDom.value.trim(), t: mdTel.value.trim(), m: mdMail.value.trim() })); } catch (e2) {}
     cerrarDatos();
     toast("¡Gracias! Te abrimos WhatsApp con el pedido");
