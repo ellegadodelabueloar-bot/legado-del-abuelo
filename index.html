@@ -10,9 +10,20 @@ img{max-width:100%}
 [hidden]{display:none!important}
 .sinstock{display:inline-block;background:#78120B;color:#EDE2CC;border-radius:999px;padding:1px 9px;font-size:.78em;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
 .ficha.agotada{position:relative}
-.ficha.agotada .top img{filter:grayscale(.6) brightness(.78)}
 .cinta-agotada{position:absolute;top:14px;right:14px;z-index:6;background:#78120B;color:#EDE2CC;font-family:var(--display);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-radius:999px;box-shadow:0 4px 12px rgba(0,0,0,.35)}
 .ticket #ticketCta.agotado{opacity:.6!important;filter:grayscale(.55)!important;cursor:not-allowed!important;pointer-events:none}
+.btn.avisar{background:transparent;border:1.5px solid var(--fink,var(--papel));color:var(--fink,var(--papel));box-shadow:none}
+.btn.avisar:hover{background:rgba(237,226,204,.1)}
+.ficha.agotada .cta{display:flex;flex-direction:column;gap:8px}
+.ticket #ticketPrice.agot{font-size:1.1rem!important;line-height:1.15;white-space:nowrap}
+.aviso-wrap{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(20,10,6,.74);padding:16px}
+.aviso-caja{position:relative;background:var(--papel);color:var(--tinta);border-radius:22px;max-width:420px;width:100%;padding:30px 24px 24px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.aviso-caja h3{font-size:1.45rem;margin:0 22px 10px 0;color:var(--marron)}
+.aviso-caja p{margin:0 0 14px;font-size:1rem}
+.aviso-caja input[type=email]{width:100%;box-sizing:border-box;padding:13px 14px;border-radius:12px;border:1.5px solid var(--marron);font:inherit;font-size:1rem;background:#fff9ee;color:var(--tinta)}
+.aviso-caja .btn{width:100%;margin-top:12px}
+.aviso-caja .x{position:absolute;top:8px;right:14px;background:none;border:0;font-size:1.9rem;line-height:1;cursor:pointer;color:var(--marron)}
+.aviso-err{color:#9a1c10;font-size:.9rem;min-height:1.2em;margin-top:6px}
 .faq{background:var(--marron);color:var(--papel)}
 .faq h2{font-size:clamp(2.4rem,5.4vw,4.2rem);margin-bottom:18px;max-width:16ch}
 .faq .lead{max-width:56ch;opacity:.85;margin:0 0 clamp(32px,5vw,52px)}
@@ -39,7 +50,7 @@ img{max-width:100%}
 <meta property="og:image" content="https://legadodelabuelo.com.ar/assets/jars/honey.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="image" href="assets/jars/honey.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Store","@id":"https://legadodelabuelo.com.ar/#negocio","name":"Legado del Abuelo","description":"Mostazas artesanales: Honey, Suave, Picante y a la Antigua, en frascos de 150 g. Receta del abuelo Juan. Envío gratis en Quilmes.","url":"https://legadodelabuelo.com.ar/","logo":"https://legadodelabuelo.com.ar/assets/icons/logo-512.png","image":"https://legadodelabuelo.com.ar/assets/jars/honey.png","slogan":"Herencia gastronómica","areaServed":{"@type":"City","name":"Quilmes","containedInPlace":{"@type":"AdministrativeArea","name":"Buenos Aires, Argentina"}},"sameAs":["https://www.instagram.com/legadodelabuelo.ar","https://www.tiktok.com/@ellegadodelabuelo.ar"]},{"@type":"WebSite","@id":"https://legadodelabuelo.com.ar/#web","url":"https://legadodelabuelo.com.ar/","name":"Legado del Abuelo","inLanguage":"es-AR","publisher":{"@id":"https://legadodelabuelo.com.ar/#negocio"}},{"@type":"Product","name":"Mostaza Honey 150 g","description":"Mostaza con miel. Primero se siente la miel y después la mostaza; queda suave y con un final dulce.","image":"https://legadodelabuelo.com.ar/assets/jars/honey.png","brand":{"@type":"Brand","name":"Legado del Abuelo"},"category":"Mostazas artesanales","weight":{"@type":"QuantitativeValue","value":150,"unitCode":"GRM"},"offers":{"@type":"Offer","url":"https://legadodelabuelo.com.ar/#catalogo","priceCurrency":"ARS","price":"9500","availability":"https://schema.org/OutOfStock","seller":{"@id":"https://legadodelabuelo.com.ar/#negocio"}}},{"@type":"Product","name":"Mostaza Suave 150 g","description":"Mostaza cremosa y pareja, con sabor real a mostaza para el día a día.","image":"https://legadodelabuelo.com.ar/assets/jars/suave.png","brand":{"@type":"Brand","name":"Legado del Abuelo"},"category":"Mostazas artesanales","weight":{"@type":"QuantitativeValue","value":150,"unitCode":"GRM"},"offers":{"@type":"Offer","url":"https://legadodelabuelo.com.ar/#catalogo","priceCurrency":"ARS","price":"8500","availability":"https://schema.org/InStock","seller":{"@id":"https://legadodelabuelo.com.ar/#negocio"}}},{"@type":"Product","name":"Mostaza Picante 150 g","description":"Mostaza picante con ají y pimentón, con un picor adaptado al paladar argentino y un sabor intenso.","image":"https://legadodelabuelo.com.ar/assets/jars/picante.png","brand":{"@type":"Brand","name":"Legado del Abuelo"},"category":"Mostazas artesanales","weight":{"@type":"QuantitativeValue","value":150,"unitCode":"GRM"},"offers":{"@type":"Offer","url":"https://legadodelabuelo.com.ar/#catalogo","priceCurrency":"ARS","price":"8500","availability":"https://schema.org/InStock","seller":{"@id":"https://legadodelabuelo.com.ar/#negocio"}}},{"@type":"Product","name":"Mostaza a la Antigua 150 g","description":"Mostaza de grano entero, con un blend de semillas marrones y claras que dosifica el picor y suma carácter. Edición limitada.","image":"https://legadodelabuelo.com.ar/assets/jars/antigua.png","brand":{"@type":"Brand","name":"Legado del Abuelo"},"category":"Mostazas artesanales","weight":{"@type":"QuantitativeValue","value":150,"unitCode":"GRM"},"offers":{"@type":"Offer","url":"https://legadodelabuelo.com.ar/#catalogo","priceCurrency":"ARS","price":"9500","availability":"https://schema.org/LimitedAvailability","seller":{"@id":"https://legadodelabuelo.com.ar/#negocio"}}},{"@type":"FAQPage","@id":"https://legadodelabuelo.com.ar/#preguntas","mainEntity":[{"@type":"Question","name":"¿Qué mostazas hacen y cuánto cuestan?","acceptedAnswer":{"@type":"Answer","text":"Hacemos cuatro mostazas artesanales en frascos de 150 g: Honey ($9.500), Suave ($8.500), Picante ($8.500) y a la Antigua ($9.500, edición limitada). También hay un Combo Degustación con un frasco de Suave, Honey y Picante a precio especial."}},{"@type":"Question","name":"¿Son mostazas artesanales?","acceptedAnswer":{"@type":"Answer","text":"Sí. Las hacemos en lotes chicos con la receta de mi abuelo Juan: semilla de mostaza entera, vinagre, especias y unos días de reposo."}},{"@type":"Question","name":"¿En qué se diferencian la Honey, la Suave, la Picante y la Antigua?","acceptedAnswer":{"@type":"Answer","text":"La Honey se siente primero a miel y termina dulce. La Suave es cremosa y pareja, para todos los días. La Picante tiene ají y pimentón, con un picor pensado para el paladar argentino. La Antigua es de grano entero, con un blend de semillas marrones y claras: es la más sofisticada de las cuatro."}},{"@type":"Question","name":"¿Con qué comidas va cada una?","acceptedAnswer":{"@type":"Answer","text":"La Honey va con pollo al horno, papas rústicas, cerdo y aderezos de ensalada. La Suave, con milanesas, hamburguesas, panchos y picadas. La Picante, con asado, provoleta, chorizo, quesos duros, milanesa y pancho. La Antigua, con tabla de fiambres, bondiola, cordero, pescado y papas al horno."}},{"@type":"Question","name":"¿Dónde puedo comprar mostaza artesanal en Quilmes?","acceptedAnswer":{"@type":"Answer","text":"Acá mismo: armás tu pedido en la web y te lo llevamos. En Quilmes el envío es gratis."}},{"@type":"Question","name":"¿Hacen envíos fuera de Quilmes?","acceptedAnswer":{"@type":"Answer","text":"Escribinos por WhatsApp contándonos dónde estás y te decimos cómo te llega."}},{"@type":"Question","name":"¿Cómo se paga?","acceptedAnswer":{"@type":"Answer","text":"Por transferencia o en efectivo al recibir el pedido. Armás tu pedido en la web, lo mandás por WhatsApp y te confirmamos."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Store","@id":"https://legadodelabuelo.com.ar/#negocio","name":"Legado del Abuelo","description":"Mostazas artesanales: Honey, Suave, Picante y a la Antigua, en frascos de 150 g. Receta del abuelo Juan. Envío gratis en Quilmes.","url":"https://legadodelabuelo.com.ar/","logo":"https://legadodelabuelo.com.ar/assets/icons/logo-512.png","image":"https://legadodelabuelo.com.ar/assets/jars/honey.png","slogan":"Herencia gastronómica","areaServed":{"@type":"City","name":"Quilmes","containedInPlace":{"@type":"AdministrativeArea","name":"Buenos Aires, Argentina"}},"sameAs":["https://www.instagram.com/legadodelabuelo.ar","https://www.tiktok.com/@ellegadodelabuelo.ar"]},{"@type":"WebSite","@id":"https://legadodelabuelo.com.ar/#web","url":"https://legadodelabuelo.com.ar/","name":"Legado del Abuelo","inLanguage":"es-AR","publisher":{"@id":"https://legadodelabuelo.com.ar/#negocio"}},{"@type":"Product","name":"Mostaza Honey 150 g","description":"Mostaza con miel. Primero se siente la miel y después la mostaza; queda suave y con un final dulce.","image":"https://legadodelabuelo.com.ar/assets/jars/honey.png","brand":{"@type":"Brand","name":"Legado del Abuelo"},"category":"Mostazas artesanales","weight":{"@type":"QuantitativeValue","value":150,"unitCode":"GRM"},"offers":{"@type":"Offer","url":"https://legadodelabuelo.com.ar/#catalogo","priceCurrency":"ARS","price":"9500","availability":"https://schema.org/OutOfStock","seller":{"@id":"https://legadodelabuelo.com.ar/#negocio"}}},{"@type":"Product","name":"Mostaza Suave 150 g","description":"Mostaza cremosa y pareja, con sabor real a mostaza para el día a día.","image":"https://legadodelabuelo.com.ar/assets/jars/suave.png","brand":{"@type":"Brand","name":"Legado del Abuelo"},"category":"Mostazas artesanales","weight":{"@type":"QuantitativeValue","value":150,"unitCode":"GRM"},"offers":{"@type":"Offer","url":"https://legadodelabuelo.com.ar/#catalogo","priceCurrency":"ARS","price":"8500","availability":"https://schema.org/InStock","seller":{"@id":"https://legadodelabuelo.com.ar/#negocio"}}},{"@type":"Product","name":"Mostaza Picante 150 g","description":"Mostaza picante con ají y pimentón, con un picor adaptado al paladar argentino y un sabor intenso.","image":"https://legadodelabuelo.com.ar/assets/jars/picante.png","brand":{"@type":"Brand","name":"Legado del Abuelo"},"category":"Mostazas artesanales","weight":{"@type":"QuantitativeValue","value":150,"unitCode":"GRM"},"offers":{"@type":"Offer","url":"https://legadodelabuelo.com.ar/#catalogo","priceCurrency":"ARS","price":"8500","availability":"https://schema.org/InStock","seller":{"@id":"https://legadodelabuelo.com.ar/#negocio"}}},{"@type":"Product","name":"Mostaza a la Antigua 150 g","description":"Mostaza de grano entero, con un blend de semillas marrones y claras que dosifica el picor y suma carácter. Edición limitada.","image":"https://legadodelabuelo.com.ar/assets/jars/antigua.png","brand":{"@type":"Brand","name":"Legado del Abuelo"},"category":"Mostazas artesanales","weight":{"@type":"QuantitativeValue","value":150,"unitCode":"GRM"},"offers":{"@type":"Offer","url":"https://legadodelabuelo.com.ar/#catalogo","priceCurrency":"ARS","price":"9500","availability":"https://schema.org/LimitedAvailability","seller":{"@id":"https://legadodelabuelo.com.ar/#negocio"}}},{"@type":"FAQPage","@id":"https://legadodelabuelo.com.ar/#preguntas","mainEntity":[{"@type":"Question","name":"¿Qué mostazas hacen y cuánto cuestan?","acceptedAnswer":{"@type":"Answer","text":"Hacemos cuatro mostazas artesanales en frascos de 150 g: Honey ($9.500, agotada por ahora), Suave ($8.500), Picante ($8.500) y a la Antigua ($9.500, edición limitada). También hay un Combo Degustación con un frasco de Suave, Honey y Picante a precio especial."}},{"@type":"Question","name":"¿Son mostazas artesanales?","acceptedAnswer":{"@type":"Answer","text":"Sí. Las hacemos en lotes chicos con la receta de mi abuelo Juan: semilla de mostaza entera, vinagre, especias y unos días de reposo."}},{"@type":"Question","name":"¿En qué se diferencian la Honey, la Suave, la Picante y la Antigua?","acceptedAnswer":{"@type":"Answer","text":"La Honey se siente primero a miel y termina dulce. La Suave es cremosa y pareja, para todos los días. La Picante tiene ají y pimentón, con un picor pensado para el paladar argentino. La Antigua es de grano entero, con un blend de semillas marrones y claras: es la más sofisticada de las cuatro."}},{"@type":"Question","name":"¿Con qué comidas va cada una?","acceptedAnswer":{"@type":"Answer","text":"La Honey va con pollo al horno, papas rústicas, cerdo y aderezos de ensalada. La Suave, con milanesas, hamburguesas, panchos y picadas. La Picante, con asado, provoleta, chorizo, quesos duros, milanesa y pancho. La Antigua, con tabla de fiambres, bondiola, cordero, pescado y papas al horno."}},{"@type":"Question","name":"¿Dónde puedo comprar mostaza artesanal en Quilmes?","acceptedAnswer":{"@type":"Answer","text":"Acá mismo: armás tu pedido en la web y te lo llevamos. En Quilmes el envío es gratis."}},{"@type":"Question","name":"¿Hacen envíos fuera de Quilmes?","acceptedAnswer":{"@type":"Answer","text":"Escribinos por WhatsApp contándonos dónde estás y te decimos cómo te llega."}},{"@type":"Question","name":"¿Cómo se paga?","acceptedAnswer":{"@type":"Answer","text":"Por transferencia o en efectivo al recibir el pedido. Armás tu pedido en la web, lo mandás por WhatsApp y te confirmamos."}}]}]}</script>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/icons/favicon-48.png">
@@ -1725,7 +1736,7 @@ img.ing{object-fit:contain;pointer-events:none;-webkit-user-select:none;user-sel
     <p class="eyebrow">Antes de pedir</p>
     <h2>Preguntas frecuentes</h2>
     <p class="lead">Lo que más nos preguntan sobre las mostazas, los envíos y cómo pedir.</p>
-    <details><summary>¿Qué mostazas hacen y cuánto cuestan?</summary><p>Hacemos cuatro mostazas artesanales en frascos de 150 g: Honey ($9.500), Suave ($8.500), Picante ($8.500) y a la Antigua ($9.500, edición limitada). También hay un Combo Degustación con un frasco de Suave, Honey y Picante a precio especial.</p></details>
+    <details><summary>¿Qué mostazas hacen y cuánto cuestan?</summary><p>Hacemos cuatro mostazas artesanales en frascos de 150 g: Honey ($9.500, agotada por ahora), Suave ($8.500), Picante ($8.500) y a la Antigua ($9.500, edición limitada). También hay un Combo Degustación con un frasco de Suave, Honey y Picante a precio especial.</p></details>
     <details><summary>¿Son mostazas artesanales?</summary><p>Sí. Las hacemos en lotes chicos con la receta de mi abuelo Juan: semilla de mostaza entera, vinagre, especias y unos días de reposo.</p></details>
     <details><summary>¿En qué se diferencian la Honey, la Suave, la Picante y la Antigua?</summary><p>La Honey se siente primero a miel y termina dulce. La Suave es cremosa y pareja, para todos los días. La Picante tiene ají y pimentón, con un picor pensado para el paladar argentino. La Antigua es de grano entero, con un blend de semillas marrones y claras: es la más sofisticada de las cuatro.</p></details>
     <details><summary>¿Con qué comidas va cada una?</summary><p>La Honey va con pollo al horno, papas rústicas, cerdo y aderezos de ensalada. La Suave, con milanesas, hamburguesas, panchos y picadas. La Picante, con asado, provoleta, chorizo, quesos duros, milanesa y pancho. La Antigua, con tabla de fiambres, bondiola, cordero, pescado y papas al horno.</p></details>
@@ -1888,6 +1899,45 @@ var ASSET={};function A(p){return ASSET[p]||p;}
   }
   medir("visita", "", true);
 
+  /* ---------- "Avisame cuando vuelva": se anota el mail en la planilla (pestaña Avisos_stock) ---------- */
+  function abrirAviso(id){
+    var f = byId(id); if (!f) return;
+    var viejo = document.getElementById("avisoWrap"); if (viejo) viejo.remove();
+    var yaMail = "";
+    var w = document.createElement("div"); w.className = "aviso-wrap"; w.id = "avisoWrap";
+    w.innerHTML = '<div class="aviso-caja" role="dialog" aria-modal="true" aria-labelledby="avisoTit"><button type="button" class="x" aria-label="Cerrar">×</button>' +
+      '<h3 id="avisoTit">Avisame cuando vuelva la ' + f.name + '</h3>' +
+      '<div id="avisoCuerpo"><p>Dejanos tu mail y te escribimos apenas haya stock. Solo te mandamos ese aviso.</p>' +
+      '<form id="avisoForm" novalidate><input type="email" id="avisoMail" autocomplete="email" inputmode="email" placeholder="ejemplo@gmail.com" aria-label="Tu mail" value="' + yaMail.replace(/"/g, "") + '">' +
+      '<input type="text" id="avisoWeb" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">' +
+      '<div class="aviso-err" id="avisoErr" role="alert"></div><button type="submit" class="btn">Avisarme</button></form></div></div>';
+    document.body.appendChild(w);
+    var cerrar = function(){ w.remove(); document.removeEventListener("keydown", esc); };
+    var esc = function(e){ if (e.key === "Escape") cerrar(); };
+    document.addEventListener("keydown", esc);
+    w.addEventListener("click", function(e){ if (e.target === w || e.target.classList.contains("x")) cerrar(); });
+    var inp = document.getElementById("avisoMail"); setTimeout(function(){ inp.focus(); }, 50);
+    document.getElementById("avisoForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      var mail = inp.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)){ document.getElementById("avisoErr").textContent = "Revisá el mail, parece que le falta algo."; return; }
+      if (!document.getElementById("avisoWeb").value && PEDIDOS_URL){
+        try {
+          fetch(PEDIDOS_URL, { method: "POST", mode: "no-cors", keepalive: true, headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify({ tipo: "aviso_stock", producto: id, email: mail.slice(0, 120) }) });
+        } catch (er) {}
+      }
+      medir("aviso_stock", id);
+      document.getElementById("avisoCuerpo").innerHTML = '<p>Listo, te avisamos a <b></b> apenas vuelva la ' + f.name + '. ¡Gracias por la paciencia!</p><button type="button" class="btn" id="avisoOk">Cerrar</button>';
+      w.querySelector("b").textContent = mail;
+      document.getElementById("avisoOk").addEventListener("click", cerrar);
+    });
+  }
+  document.addEventListener("click", function(e){
+    var b = e.target.closest && e.target.closest("[data-avisar]");
+    if (b){ e.preventDefault(); abrirAviso(b.dataset.avisar); }
+  });
+
   var FLAVORS = [
     { id:"honey", ing:"miel", ingImg:"honey", tintaIng:"#B4731F", ingNombre:"La Honey", name:"Honey", sub:"Mostaza con miel", price:"9500", agotado:true,
       accent:"#C6822E", pat:"#E0A64E", bg1:"#55321A", bg2:"#2A190C", ink:"#C6822E", panel:"#38230F",
@@ -1961,7 +2011,7 @@ var ASSET={};function A(p){return ASSET[p]||p;}
     var d = document.createElement("div");
     d.className = "fila";
     d.innerHTML = '<div class="ph" style="--fbg:' + f.bg1 + '"><img src="' + A("assets/jars/" + f.id + ".png") + '" alt=""></div>' +
-      '<div><h3>' + f.name + '</h3><div class="meta">' + f.sub + (precio(f) !== null ? " · " + pesos(precio(f)) : "") + (f.agotado ? ' · <span class="sinstock">Sin stock</span>' : "") + '</div></div>' +
+      '<div><h3>' + f.name + '</h3><div class="meta">' + f.sub + (precio(f) !== null ? " · " + pesos(precio(f)) : "") + (f.agotado ? ' · <span class="sinstock">Agotado</span>' : "") + '</div></div>' +
       '<div class="stepper"><button type="button" id="' + pref + '-menos-' + f.id + '" aria-label="Quitar una ' + f.name + '"' + (n <= 0 ? " disabled" : "") + '>−</button>' +
       '<output id="' + pref + '-cant-' + f.id + '" aria-live="polite">' + n + '</output>' +
       '<button type="button" id="' + pref + '-mas-' + f.id + '" aria-label="Agregar una ' + f.name + '"' + (f.agotado ? " disabled" : "") + '>+</button></div>';
@@ -2012,7 +2062,7 @@ var ASSET={};function A(p){return ASSET[p]||p;}
   }
   function addToCart(id, d, esperar){
     var _f = byId(id);
-    if (d > 0 && _f && _f.agotado){ toast("La " + _f.name + " está sin stock por ahora"); return; }
+    if (d > 0 && _f && _f.agotado){ toast("La " + _f.name + " está agotada por ahora"); return; }
     cart[id] = Math.max(0, (cart[id] || 0) + d);
     if (d > 0) medir("agrego_carrito", id);
     recalcDeg();
@@ -3235,8 +3285,12 @@ var ASSET={};function A(p){return ASSET[p]||p;}
     if (_dw) _dw.href = waHref(mensaje(DEG, "Quiero pedir el Combo Degustación:", PRECIO_DEG));
     var _sinDeg = TRES.some(function(f){ return f.agotado; });
     if (_sinDeg){
-      var _bd = $("#destAdd"); _bd.disabled = true; _bd.innerHTML = "Sin stock por ahora";
+      var _bd = $("#destAdd"); _bd.disabled = true; _bd.innerHTML = "Agotado";
       var _dwx = $("#destWa"); if (_dwx) _dwx.hidden = true;
+      var _caja = document.createElement("a"); _caja.className = "btn"; _caja.href = "#combo"; _caja.textContent = "Armá tu caja con las otras tres";
+      _bd.parentNode.appendChild(_caja);
+      var _hon = TRES.filter(function(f){ return f.agotado; })[0];
+      if (_hon){ var _av = document.createElement("button"); _av.type = "button"; _av.className = "btn avisar"; _av.dataset.avisar = _hon.id; _av.textContent = "Avisame cuando vuelva la " + _hon.name; _bd.parentNode.appendChild(_av); }
     }
     $("#destAdd").addEventListener("click", function(){
       TRES.forEach(function(f){ cart[f.id] += 1; });
@@ -3300,7 +3354,8 @@ var ASSET={};function A(p){return ASSET[p]||p;}
     namelayer.appendChild(n); names.push(n);
   });
 
-  var idx = 0, target = 0, dragging = false, dragged = false, startX = 0, startIdx = 0, raf = 0, tocada = -1;
+  var _ini = Math.max(0, FLAVORS.findIndex(function(f){ return !f.agotado; }));
+  var idx = _ini, target = _ini, dragging = false, dragged = false, startX = 0, startIdx = 0, raf = 0, tocada = -1;
 
   function shortest(d){ d = ((d % N) + N) % N; return d > N / 2 ? d - N : d; }
   function mix(a, b, t){
@@ -3541,6 +3596,11 @@ var ASSET={};function A(p){return ASSET[p]||p;}
       aho.hidden = !_dif;
       if (_dif) aho.textContent = "Ahorrás " + pesos(_dif);
     }
+    ticketPrice.classList.toggle("agot", !!f.agotado);
+    if (f.agotado){
+      ticketPrice.textContent = "Agotada";
+      vieja.textContent = ""; vieja.hidden = true; if (off) off.hidden = true; if (aho) aho.hidden = true;
+    }
     if (ticket.animate) ticket.animate([
       { transform: "rotate(-2deg)" }, { transform: "rotate(2.4deg)", offset: .35 },
       { transform: "rotate(-1.2deg)", offset: .7 }, { transform: "rotate(0deg)" }
@@ -3549,8 +3609,8 @@ var ASSET={};function A(p){return ASSET[p]||p;}
     var _ag = !!f.agotado;
     ticketCta.disabled = _ag;
     ticketCta.classList.toggle("agotado", _ag);
-    var _tb = ticketCta.querySelector("b"); if (_tb) _tb.textContent = _ag ? "Sin stock" : "Sumar al carrito";
-    ticketCta.setAttribute("aria-label", _ag ? "Mostaza " + f.name + " sin stock por ahora" : "Sumar Mostaza " + f.name + " al pedido");
+    var _tb = ticketCta.querySelector("b"); if (_tb) _tb.textContent = _ag ? "Agotado" : "Sumar al carrito";
+    ticketCta.setAttribute("aria-label", _ag ? "Mostaza " + f.name + " agotada por ahora" : "Sumar Mostaza " + f.name + " al pedido");
     stage.setAttribute("aria-activedescendant", "");
   }
   function goTo(i){
@@ -3621,7 +3681,7 @@ var ASSET={};function A(p){return ASSET[p]||p;}
 
   ticketCta.addEventListener("click", function(){
     var f = FLAVORS[((Math.round(idx) % N) + N) % N];
-    if (f.agotado){ toast("La " + f.name + " está sin stock por ahora"); return; }
+    if (f.agotado){ toast("La " + f.name + " está agotada por ahora"); return; }
     addToCart(f.id, 1, true); abueloServir(f.id, null, abrirCarritoSiHaceFalta);
   });
 
@@ -3884,12 +3944,19 @@ var ASSET={};function A(p){return ASSET[p]||p;}
   })();
 
   /* ====== FICHAS ====== */
-  $("#fichas").innerHTML = FLAVORS.map(function(f){
+  /* Si la mostaza está agotada, los colores de la tarjeta se apagan hacia un gris cálido (el frasco no se toca). */
+  function apagar(hex, t){
+    var n = parseInt(hex.slice(1), 16), r = n >> 16 & 255, g = n >> 8 & 255, b = n & 255, y = r * .3 + g * .59 + b * .11;
+    function m(c){ return ("0" + Math.round(c + (y - c) * t).toString(16)).slice(-2); }
+    return "#" + m(r) + m(g) + m(b);
+  }
+  $("#fichas").innerHTML = FLAVORS.slice().sort(function(a, b){ return (a.agotado ? 1 : 0) - (b.agotado ? 1 : 0); }).map(function(f){
+    var cBg = f.agotado ? apagar(f.bg1, .72) : f.bg1, cInk = f.agotado ? apagar(f.ink, .72) : f.ink, cPanel = f.agotado ? apagar(f.panel, .72) : f.panel;
     var dots = "";
     for (var i = 1; i <= 5; i++) dots += '<i class="' + (i <= f.heat ? "on" : "") + '"></i>';
-    return '<article class="ficha' + (f.limitada ? " limitada" : "") + (f.agotado ? " agotada" : "") + '" style="--fbg:' + f.bg1 + ';--fink:' + f.ink + ';--panel:' + f.panel + '">' +
+    return '<article class="ficha' + (f.limitada ? " limitada" : "") + (f.agotado ? " agotada" : "") + '" style="--fbg:' + cBg + ';--fink:' + cInk + ';--panel:' + cPanel + '">' +
       (f.limitada ? '<div class="cinta-lim"><span>Edición limitada</span></div>' : '') +
-      (f.agotado ? '<div class="cinta-agotada">Sin stock</div>' : '') +
+      (f.agotado ? '<div class="cinta-agotada">Agotado</div>' : '') +
       '<div class="top"><div class="pat tile" aria-hidden="true"></div>' +
         '<img src="' + A("assets/jars/" + f.id + ".png") + '" alt="Frasco de Mostaza ' + f.name + '"></div>' +
       '<div class="body"><div class="ficha-tit"><h3>' + f.name + '</h3><span class="ficha-neto"><b>150g</b> cont. neto</span></div><div class="sub">' + f.sub + '</div>' +
@@ -3902,7 +3969,7 @@ var ASSET={};function A(p){return ASSET[p]||p;}
             (antes(f) ? '<s>' + pesos(antes(f)) + '</s>' : '') +
           '</div>' : '') +
         '<p class="ficha-envio"><svg class="camion" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.6 5.6h12.2v9.8H1.6z" fill="currentColor"/><path d="M14.2 8.4h3.9l3.1 3.3v3.7h-7z" fill="currentColor" opacity=".8"/><circle cx="7" cy="17.4" r="2.2" fill="currentColor"/><circle cx="17.4" cy="17.4" r="2.2" fill="currentColor"/><circle cx="7" cy="17.4" r=".8" fill="#0C2716"/><circle cx="17.4" cy="17.4" r=".8" fill="#0C2716"/></svg><span>Envío gratis en Quilmes</span></p>' +
-        (f.agotado ? '<div class="cta"><button type="button" class="btn" disabled>Sin stock por ahora</button></div>'
+        (f.agotado ? '<div class="cta"><button type="button" class="btn" disabled>Agotado</button><button type="button" class="btn avisar" data-avisar="' + f.id + '">Avisame cuando vuelva</button></div>'
           : '<div class="cta"><button type="button" class="btn" data-add="' + f.id + '">' + CART_ICON + "Sumar " + f.name + ' al pedido</button></div>') +
       '</div></article>';
   }).join("");
